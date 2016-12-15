@@ -63,18 +63,6 @@ function socialmenu(){
   text("Party", 1030, 190);
   text("Date", 870, 350);
   text("Team", 1030, 330);
-  text("Study", 1030, 370)
-  
+  text("Study", 1030, 370);
 }
 
-function reset(){
-  study = false;
-  relax = false;
-  socialA = false;
-  suboption = false;
-  events = true;
-  eventshappen = true;
-  sick = false;
-  overwhelmed = false;
-  depressed = false;
-}

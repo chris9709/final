@@ -22,8 +22,11 @@ function findMonth(){
   }
   if(datemonth === 12){
     monthname = "Dec";
+    if(dateday > 22){
+      dateday = 22;
+    }
     if(dateday === 22){
-    ending = true;
+    gamestop = true;
     }
   }
 }
@@ -73,25 +76,90 @@ function classes(){
   stroke(0);
   strokeWeight(3);
   rect(0, 160, 190, 160);
+  fill(0);
+  noStroke();
+  textAlign(CENTER);
+  textFont(autumn, 35);
+  text("Classes", 95, 190);
+  computerscience.checkclass();
+  physics.checkclass();
+  math.checkclass();
+  english.checkclass();
+  
   if(computerscience.upcoming){
   fill(0);
   noStroke();
   textAlign(CENTER);
   textFont(autumn, 35);
-  text("CS", 35, 290);
+  text("CS", 25, 220);
+  }
+   if(physics.upcoming){
+  fill(0);
+  noStroke();
+  textAlign(CENTER);
+  textFont(autumn, 35);
+  text("PH", 70, 220);
+  }
+   if(math.upcoming){
+  fill(0);
+  noStroke();
+  textAlign(CENTER);
+  textFont(autumn, 35);
+  text("MA", 115, 220);
+  }
+   if(english.upcoming){
+  fill(0);
+  noStroke();
+  textAlign(CENTER);
+  textFont(autumn, 35);
+  text("EN", 160, 220);
+  }
+  fill(0);
+  noStroke();
+  textAlign(CENTER);
+  textFont(autumn, 35);
+  text("Upcomings", 95, 270);
+  fill(255, 0, 0);
+  
+  if((datemonth === 9) && (dateday > 26) && (dateday < 30)){
+    text("CS:MIDTERM", 95, 300);
+  }
+  if((datemonth === 10) && (dateday > 13) && (dateday < 17)){
+    text("CS:MIDTERM", 95, 300);
+  }
+  if((datemonth === 10) && (dateday > 1) && (dateday < 5)){
+    text("CS:MIDTERM", 95, 300);
+  }
+  if((datemonth === 11) && (dateday < 4)){
+    text("CS:MIDTERM", 95, 300);
   }
   }
-
+  
 function status(){
+  
+  if(mood > 100){
+    mood = 100;
+  }
+  if(health > 100){
+    health = 100;
+  }
+  if(stress < 0){
+    stress = 0;
+  }
+  if(social < 0){
+    social = 0;
+  }
   noFill();
   stroke(0);
   strokeWeight(3);
   rect(0, 320, 190, 160);
   textAlign(LEFT);
   textFont(autumn, 35);
+  
   if(mood < 55){
   fill(255,0,0);
   }
+  
   else{
     fill(0);
   }
@@ -100,6 +168,7 @@ function status(){
   
   if(health < 65){
   fill(255,0,0);}
+  
   else{
     fill(0);
   }
@@ -109,6 +178,7 @@ function status(){
   if((stress > 45) || (stress < 10)){
   fill(255,0,0);
   }
+  
   else{
     fill(0);
   }
@@ -118,6 +188,7 @@ function status(){
   if((social < 10) || (social > 70)){
   fill(255, 0, 0);
   }
+  
   else{
     fill(0);
   }
@@ -140,14 +211,30 @@ function grade(){
   text("EN: " + round(english.condition), 20, 630);
 }
 
-function gameend(){
-  strokeWeight(5);
+function musicbutton(){
   stroke(0);
-  fill(255);
-  rect(200, 150, 600, 350);
-  textAlign(CENTER);
-  textFont(autumn, 100);
-  noStroke();
+  strokeWeight(3);
+  noFill();
+  rect(1080, 0, 60, 60);
+  rect(1140, 0, 60, 60);
   fill(0);
-  text("Semester Ends!", 500, 400);
+  noStroke();
+  
+  if(musicplaying){
+  image(musicB, 1085, 5);
+  rect(1092, 10, 15, 40);
+  rect(1113, 10, 15, 40);
+  }
+  
+  else if(!musicplaying){
+  image(musicB, 1085, 5);
+  triangle(1090, 10, 1090, 50, 1130, 30);
+  }
+  
+  triangle(1150, 10, 1190, 10, 1170, 50);
+  textAlign(CENTER);
+  textFont(autumn, 35);
+  fill(0);
+  noStroke();
+  text('music', 1030, 40);
 }
